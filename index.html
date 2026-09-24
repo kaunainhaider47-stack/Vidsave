@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Style.css">
+  <script src="config.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -26,12 +27,7 @@
       <div class="menu-wrap">
         <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
         <div class="site-menu" id="site-menu" role="menu" aria-hidden="true">
-          <a href="#top" role="menuitem">Home</a>
-          <a href="#how-it-works" role="menuitem">How it works</a>
-          <a href="#privacy" role="menuitem">Privacy</a>
-          <a href="#terms" role="menuitem">Terms</a>
-          <a href="#footer" role="menuitem">Contact</a>
-          <a href="#settings" role="menuitem">Settings</a>
+          <a href="#top" role="menuitem">Home</a><a href="#how-it-works" role="menuitem">How it works</a><a href="#privacy" role="menuitem">Privacy</a><a href="#terms" role="menuitem">Terms</a><a href="#footer" role="menuitem">Contact</a><a href="#settings" role="menuitem">Settings</a>
         </div>
       </div>
     </div>
@@ -43,12 +39,7 @@
     <p class="subtitle">A beautifully simple way to save and organize video links you own or have permission to use.</p>
 
     <form class="download-card" id="download-form" novalidate>
-      <div class="input-box">
-        <span class="link-icon" aria-hidden="true">↗</span>
-        <label class="sr-only" for="video-url">Video URL</label>
-        <input id="video-url" name="video-url" type="url" inputmode="url" placeholder="Paste a video URL here..." autocomplete="url" spellcheck="false" required>
-        <button class="paste-btn" id="paste-btn" type="button">Paste</button>
-      </div>
+      <div class="input-box"><span class="link-icon" aria-hidden="true">↗</span><label class="sr-only" for="video-url">Video URL</label><input id="video-url" name="video-url" type="url" inputmode="url" placeholder="Paste a video URL here..." autocomplete="url" spellcheck="false" required><button class="paste-btn" id="paste-btn" type="button">Paste</button></div>
       <button class="download-btn" id="download-btn" type="submit"><span aria-hidden="true">↓</span> <span class="button-label">Download</span></button>
     </form>
     <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
@@ -60,11 +51,9 @@
       <article class="feature-card"><div class="feature-icon purple" aria-hidden="true">⌁</div><h3>Mobile Friendly</h3><p>A polished experience that feels right on every screen.</p></article>
     </section>
     <section class="how-it-works" id="how-it-works"><span class="section-kicker">Simple by design</span><p>Paste a link. Check your rights. Save what you’re allowed to keep.</p></section>
-    <div class="sr-only" id="privacy">VidSave respects your privacy.</div>
-    <div class="sr-only" id="terms">Use VidSave responsibly and only with content you are authorized to use.</div>
-    <div class="sr-only" id="settings">VidSave settings.</div>
+    <div class="sr-only" id="privacy">VidSave respects your privacy.</div><div class="sr-only" id="terms">Use VidSave responsibly and only with content you are authorized to use.</div><div class="sr-only" id="settings">VidSave settings.</div>
   </main>
 
-  <footer id="footer"><a class="footer-logo" href="#top"><span class="mini-mark">▶</span> Vid<span>Save</span></a><p>© 2026 VidSave. Built for the moments worth keeping.</p><div class="footer-links"><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="#footer">Contact</a></div></footer>
+  <footer id="footer"><a class="footer-logo" href="#top"><span class="mini-mark">▶</span> Vid<span>Save</span></a><p>© 2026 VidSave. Built for the moments worth keeping.</p><div class="footer-links"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></div></footer>
 </body>
 </html>
