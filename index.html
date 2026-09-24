@@ -4,58 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VidSave - Video Downloader</title>
+  <title>VidSave - Save Videos Easily</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- Decorative Background -->
+  <div class="bg-text bg1">VIDSAVE</div>
+  <div class="bg-text bg2">DOWNLOAD</div>
+  <div class="bg-text bg3">VIDEO</div>
+  <div class="bg-text bg4">SAVE</div>
+
+  <!-- Navbar -->
   <nav class="navbar">
+
     <div class="logo">
-      <span>▶</span> VidSave
+      <span class="logo-icon">▶</span>
+      VidSave
     </div>
 
     <div class="nav-links">
       <a href="#">Home</a>
-      <a href="#">About</a>
+      <a href="#">How it works</a>
       <a href="#">FAQ</a>
     </div>
+
   </nav>
 
 
-  <section class="hero">
+  <!-- Main Section -->
+  <main class="hero">
 
     <div class="badge">
-      ⚡ Fast & Simple
+      ⚡ Fast • Simple • Easy
     </div>
 
     <h1>
-      Download Videos
-      <br>
-      <span>Save Them Easily</span>
+      Save Your
+      <span>Favorite Videos</span>
     </h1>
 
     <p class="subtitle">
-      Paste your video link and get started.
-      Simple, fast and easy to use.
+      Paste a video link below and get started.
+      A simple and clean way to manage downloadable content.
     </p>
 
 
+    <!-- URL Box -->
     <div class="download-card">
 
-      <div class="input-area">
+      <div class="input-box">
+
         <span class="link-icon">🔗</span>
 
         <input
           type="url"
           placeholder="Paste video URL here..."
+          aria-label="Video URL"
         >
 
         <button class="paste-btn">
           Paste
         </button>
+
       </div>
+
 
       <button class="download-btn">
         <span>⬇</span>
@@ -65,43 +80,72 @@
     </div>
 
 
-    <p class="supported">
-      Supports links from compatible platforms
+    <p class="small-text">
+      Only download content you own or have permission to use.
     </p>
 
 
-    <div class="features">
+    <!-- Features -->
+    <section class="features">
 
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
+      <div class="feature-card">
+
+        <div class="feature-icon red">
+          ⚡
+        </div>
+
         <h3>Fast</h3>
-        <p>Quick processing</p>
+
+        <p>
+          Simple and quick interface.
+        </p>
+
       </div>
 
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <h3>Safe</h3>
-        <p>Privacy focused</p>
+
+      <div class="feature-card">
+
+        <div class="feature-icon blue">
+          🔒
+        </div>
+
+        <h3>Private</h3>
+
+        <p>
+          Your links stay private.
+        </p>
+
       </div>
 
-      <div class="feature">
-        <div class="feature-icon">📱</div>
-        <h3>Mobile</h3>
-        <p>Works everywhere</p>
+
+      <div class="feature-card">
+
+        <div class="feature-icon purple">
+          📱
+        </div>
+
+        <h3>Mobile Friendly</h3>
+
+        <p>
+          Works smoothly on phones.
+        </p>
+
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </main>
 
 
+  <!-- Footer -->
   <footer>
+
     <div class="footer-logo">
       ▶ VidSave
     </div>
 
     <p>
-      © 2026 VidSave. Download content you own or have permission to use.
+      © 2026 VidSave. All rights reserved.
     </p>
 
     <div class="footer-links">
@@ -109,7 +153,8 @@
       <a href="#">Terms</a>
       <a href="#">Contact</a>
     </div>
+
   </footer>
 
 </body>
-                                     </html>
+      </html>
