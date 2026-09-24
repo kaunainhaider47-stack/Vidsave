@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="VidSave — save video links you own or are authorized to use.">
-  <meta name="theme-color" content="#0b0719">
+  <meta name="theme-color" content="#eef2ff">
   <title>VidSave — Save what matters</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,28 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="ambient-glow glow-pink" aria-hidden="true"></div>
-  <div class="ambient-glow glow-blue" aria-hidden="true"></div>
-  <div class="ambient-glow glow-orange" aria-hidden="true"></div>
-  <div class="ambient-glow glow-purple" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
-  <div class="bg-text bg1" aria-hidden="true">VIDSAVE</div>
-  <div class="bg-text bg2" aria-hidden="true">DOWNLOAD</div>
-  <div class="bg-text bg3" aria-hidden="true">VIDEO</div>
-  <div class="bg-text bg4" aria-hidden="true">SAVE</div>
+  <div class="pastel-blob blob-pink" aria-hidden="true"></div>
+  <div class="pastel-blob blob-blue" aria-hidden="true"></div>
+  <div class="pastel-blob blob-lavender" aria-hidden="true"></div>
+  <div class="soft-shape shape-one" aria-hidden="true"></div>
+  <div class="soft-shape shape-two" aria-hidden="true"></div>
 
   <nav class="navbar" aria-label="Main navigation">
     <a class="logo" href="#top" aria-label="VidSave home"><span class="logo-icon" aria-hidden="true"><span>▶</span></span><span>Vid<span class="logo-accent">Save</span></span></a>
-    <div class="nav-links"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#footer">Contact</a></div>
+    <div class="nav-actions">
+      <div class="nav-links"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#footer">Contact</a></div>
+      <div class="menu-wrap">
+        <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+        <div class="site-menu" id="site-menu" role="menu" aria-hidden="true">
+          <a href="#top" role="menuitem">Home</a>
+          <a href="#how-it-works" role="menuitem">How it works</a>
+          <a href="#privacy" role="menuitem">Privacy</a>
+          <a href="#terms" role="menuitem">Terms</a>
+          <a href="#footer" role="menuitem">Contact</a>
+          <a href="#settings" role="menuitem">Settings</a>
+        </div>
+      </div>
+    </div>
   </nav>
 
   <main id="top" class="hero">
@@ -51,8 +60,11 @@
       <article class="feature-card"><div class="feature-icon purple" aria-hidden="true">⌁</div><h3>Mobile Friendly</h3><p>A polished experience that feels right on every screen.</p></article>
     </section>
     <section class="how-it-works" id="how-it-works"><span class="section-kicker">Simple by design</span><p>Paste a link. Check your rights. Save what you’re allowed to keep.</p></section>
+    <div class="sr-only" id="privacy">VidSave respects your privacy.</div>
+    <div class="sr-only" id="terms">Use VidSave responsibly and only with content you are authorized to use.</div>
+    <div class="sr-only" id="settings">VidSave settings.</div>
   </main>
 
-  <footer id="footer"><a class="footer-logo" href="#top"><span class="mini-mark">▶</span> Vid<span>Save</span></a><p>© 2026 VidSave. Built for the moments worth keeping.</p><div class="footer-links"><a href="#footer">Privacy</a><a href="#footer">Terms</a><a href="mailto:hello@vidsave.example">Contact</a></div></footer>
+  <footer id="footer"><a class="footer-logo" href="#top"><span class="mini-mark">▶</span> Vid<span>Save</span></a><p>© 2026 VidSave. Built for the moments worth keeping.</p><div class="footer-links"><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="#footer">Contact</a></div></footer>
 </body>
 </html>
