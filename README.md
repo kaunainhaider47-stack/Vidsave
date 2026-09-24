@@ -1,35 +1,49 @@
 # VidSave
 
-VidSave is a small frontend and backend for downloading direct video/file URLs that you own or are authorized to download. It does **not** extract media from platforms, bypass DRM, logins, paywalls, or other access controls.
+VidSave preserves the existing pastel-gradient interface and provides a small Node.js API for downloading **direct media files you own or are authorized to retrieve**. It does not scrape Pinterest, bypass login/private content, bypass DRM, or generate fake files. A Pinterest Pin URL that cannot be retrieved within those limits returns a clear error.
 
-## Run locally
+> Download only videos you own or have permission to use.
 
-1. Install Node.js 18 or newer.
-2. Copy `.env.example` to `.env` and configure the host allowlist.
-3. Start the backend:
+## Local setup
 
-```bash
-npm start
-```
+1. Install Node.js 18.17 or newer.
+2. Clone this repository and run `npm install` (there are no runtime dependencies).
+3. Copy `.env.example` to `.env`.
+4. Set `DOWNLOAD_ALLOWED_HOSTS` to exact media hostnames you own or are authorized to access. Do not add Pinterest endpoints or private services.
+5. Run `npm start` and open `http://localhost:3000`.
+6. Run `npm run check` before committing changes.
 
-4. Open `http://localhost:3000`.
+## Environment variables
 
-The Node server serves the existing frontend and exposes `POST /api/download`. The frontend sends `{ "url": "https://..." }` and receives the authorized file as a browser download.
+- `PORT` — API/web server port; defaults to `3000`.
+- `DOWNLOAD_ALLOWED_HOSTS` — required comma-separated exact hostnames for direct authorized media URLs. An empty value rejects direct downloads.
+- `MAX_DOWNLOAD_BYTES` — maximum response size; defaults to 500 MB and is capped at 500 MB.
+- `DOWNLOAD_TIMEOUT_MS` — upstream timeout in milliseconds; defaults to 30,000 and is capped at 60,000.
+- `ALLOWED_CONTENT_TYPES` — comma-separated MIME patterns; defaults to `video/*,application/octet-stream`.
+- `CORS_ORIGIN` — exact frontend origin(s), comma-separated, for a separately hosted frontend. Never use `*` in production.
 
-## Configuration
+Do not commit `.env`, tokens, cookies, API keys, or provider credentials.
 
-The server reads these environment variables:
+## API
 
-- `PORT` — server port (default `3000`).
-- `DOWNLOAD_ALLOWED_HOSTS` — comma-separated hostnames that your organization owns or has authorization to retrieve from. This is required; an empty value rejects downloads. Example: `media.example.com,cdn.example.com`.
-- `MAX_DOWNLOAD_BYTES` — maximum response size (default `524288000`, 500 MB).
-- `ALLOWED_CONTENT_TYPES` — optional comma-separated MIME types (default `video/*,application/octet-stream`).
-- `CORS_ORIGIN` — optional frontend origin for a separately hosted frontend. Keep the default same-origin setup when possible.
+`POST /api/download` with JSON `{ "url": "https://authorized.example/video.mp4" }` returns a streamed attachment. It validates the scheme, credentials, host allowlist, DNS addresses, content type, size, timeout, and redirects. It rejects localhost/private IPs and Pinterest page URLs that would require platform extraction. Errors are JSON with suitable HTTP status codes.
 
-For a separately hosted frontend, set `window.VIDSAVE_API_URL` in `config.js` to the deployed backend URL, then set the backend `CORS_ORIGIN` to that exact frontend origin.
+## GitHub Pages and deployment
 
-## API behavior
+GitHub Pages can host only the static frontend; it cannot run `server.js`. For Pages:
 
-`POST /api/download` validates an absolute HTTPS/HTTP URL, requires its hostname to be in `DOWNLOAD_ALLOWED_HOSTS`, rejects localhost/private-network targets, follows no redirects, checks the content type and size, and streams the response to the browser. Invalid URLs, disallowed hosts, unavailable files, oversized files, and upstream/server failures return a JSON error with an appropriate HTTP status.
+1. Deploy this repository's Node server to a Node-compatible service such as Render, Railway, Fly.io, or a VPS.
+2. Set the service's environment variables from `.env.example`, including a strict `CORS_ORIGIN` equal to the Pages origin (for example `https://kaunainhaider47-stack.github.io`).
+3. Change `window.VIDSAVE_API_URL` in `config.js` to the HTTPS URL of the deployed API plus `/api/download`, then publish the frontend to Pages.
+4. Keep HTTPS enabled on both origins and test the API preflight and download request.
 
-The host allowlist is an authorization boundary, not a legal determination. Only add sources where you have permission. Do not configure it to access protected platform endpoints or use it to circumvent restrictions.
+For simplest production operation, deploy the whole repository to a Node host and keep the default same-origin `/api/download` configuration.
+
+## Testing checklist
+
+- Valid and invalid URL validation in the browser.
+- Paste button on a secure context and manual-paste fallback.
+- Pinterest URL returns the honest limitation message; no fake MP4 is created.
+- Authorized direct media URL downloads with `Content-Disposition`.
+- Unauthorized hosts, redirects, oversized files, unsupported MIME types, localhost, private IPs, and malformed JSON are rejected.
+- Verify mobile layout, menu keyboard behavior, loading state, duplicate-submit prevention, CORS origin, and `npm run check`.

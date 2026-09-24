@@ -1,3 +1,2 @@
-// This default works when the frontend is served by server.js.
-// For a separate frontend deployment, set this to the public backend endpoint.
+// Same-origin is the safest default. For GitHub Pages, replace with your deployed API URL.
 window.VIDSAVE_API_URL = '/api/download';
