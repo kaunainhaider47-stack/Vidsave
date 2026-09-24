@@ -9,6 +9,7 @@
   const message = document.querySelector('#form-message');
   const menuButton = document.querySelector('#menu-button');
   const siteMenu = document.querySelector('#site-menu');
+  const apiUrl = window.VIDSAVE_API_URL || '/api/download';
 
   const setMenuState = (open) => {
     if (!menuButton || !siteMenu) return;
@@ -67,13 +68,48 @@
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const value = input.value.trim();
-    if (!validUrl(value)) { setMessage('Please enter a valid http:// or https:// video URL.'); input.focus(); return; }
+    if (!validUrl(value)) {
+      setMessage('Please enter a valid http:// or https:// video URL.');
+      input.focus();
+      return;
+    }
+
     downloadButton.disabled = true;
-    buttonLabel.textContent = 'Checking…';
-    setMessage('Checking the link. No download will start automatically.', 'loading');
-    await new Promise((resolve) => window.setTimeout(resolve, 450));
-    buttonLabel.textContent = 'Download';
-    downloadButton.disabled = false;
-    setMessage('Please confirm you own this content or have permission to download it before continuing.', 'success');
+    pasteButton.disabled = true;
+    buttonLabel.textContent = 'Preparing…';
+    setMessage('Checking the authorized file and preparing your download…', 'loading');
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/octet-stream, application/json' },
+        body: JSON.stringify({ url: value })
+      });
+
+      if (!response.ok) {
+        let error = 'The file could not be downloaded.';
+        try { error = (await response.json()).error || error; } catch (_) { /* non-JSON server error */ }
+        throw new Error(error);
+      }
+
+      const blob = await response.blob();
+      if (!blob.size) throw new Error('The server returned an empty file.');
+      const disposition = response.headers.get('Content-Disposition') || '';
+      const filename = disposition.match(/filename="?([^";]+)"?/i)?.[1] || 'vidsave-download';
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(link.href);
+      setMessage('Download ready. Please use the file only as permitted by its owner.', 'success');
+    } catch (error) {
+      setMessage(error.name === 'TypeError' ? 'The download service is unavailable. Please try again later.' : error.message);
+    } finally {
+      buttonLabel.textContent = 'Download';
+      downloadButton.disabled = false;
+      pasteButton.disabled = false;
+    }
   });
 })();
