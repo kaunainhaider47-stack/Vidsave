@@ -659,3 +659,162 @@ footer p {
     right: -80px;
   }
   }
+
+/* ===== VIDSAVE COLORFUL BACKGROUND OVERRIDE ===== */
+
+body {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 0, 85, 0.95) 0, rgba(255, 0, 85, 0.35) 12%, transparent 30%),
+    radial-gradient(circle at 85% 18%, rgba(0, 200, 255, 0.95) 0, rgba(0, 200, 255, 0.30) 12%, transparent 30%),
+    radial-gradient(circle at 15% 85%, rgba(255, 140, 0, 0.90) 0, rgba(255, 140, 0, 0.25) 12%, transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(130, 40, 255, 0.95) 0, rgba(130, 40, 255, 0.30) 13%, transparent 32%),
+    linear-gradient(135deg, #12002b 0%, #001c3d 45%, #310018 100%) !important;
+
+  background-attachment: fixed !important;
+}
+
+
+/* BIG COLORFUL GLOW CIRCLES */
+
+body::before {
+  content: "" !important;
+
+  position: fixed !important;
+
+  width: 260px !important;
+  height: 260px !important;
+
+  left: -80px !important;
+  top: 180px !important;
+
+  background: #ff0055 !important;
+
+  opacity: 0.45 !important;
+
+  filter: blur(70px) !important;
+
+  border-radius: 50% !important;
+
+  z-index: 0 !important;
+
+  pointer-events: none !important;
+}
+
+body::after {
+  content: "" !important;
+
+  position: fixed !important;
+
+  width: 280px !important;
+  height: 280px !important;
+
+  right: -90px !important;
+  bottom: 80px !important;
+
+  background: #00c8ff !important;
+
+  opacity: 0.42 !important;
+
+  filter: blur(75px) !important;
+
+  border-radius: 50% !important;
+
+  z-index: 0 !important;
+
+  pointer-events: none !important;
+}
+
+
+/* COLORFUL SIDE TEXT */
+
+.bg-text {
+  z-index: 1 !important;
+
+  color: rgba(255,255,255,0.08) !important;
+
+  text-shadow:
+    0 0 30px rgba(255,0,100,0.35) !important;
+}
+
+.bg1 {
+  color: rgba(255,30,100,0.12) !important;
+}
+
+.bg2 {
+  color: rgba(0,210,255,0.10) !important;
+}
+
+.bg3 {
+  color: rgba(255,180,0,0.10) !important;
+}
+
+.bg4 {
+  color: rgba(170,80,255,0.12) !important;
+}
+
+
+/* MAKE MAIN CONTENT CLEAR */
+
+.navbar,
+.hero,
+footer {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+
+/* STRONG RED DOWNLOAD BUTTON */
+
+.download-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #ff003c,
+      #ff1744,
+      #ff004c
+    ) !important;
+
+  box-shadow:
+    0 0 20px rgba(255,0,60,0.45),
+    0 10px 35px rgba(255,0,60,0.35) !important;
+}
+
+.download-btn:hover {
+  box-shadow:
+    0 0 30px rgba(255,0,60,0.70),
+    0 15px 45px rgba(255,0,60,0.50) !important;
+}
+
+
+/* EXTRA COLOR AROUND DOWNLOAD CARD */
+
+.download-card {
+  background: rgba(255,255,255,0.13) !important;
+
+  border: 1px solid rgba(255,255,255,0.25) !important;
+
+  box-shadow:
+    0 0 40px rgba(0,200,255,0.10),
+    0 25px 70px rgba(0,0,0,0.45) !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  body {
+    background-attachment: scroll !important;
+  }
+
+  body::before {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  body::after {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  }
