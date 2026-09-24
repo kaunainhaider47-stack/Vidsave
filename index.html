@@ -1,160 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>VidSave - Save Videos Easily</title>
-
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="VidSave — save video links you own or are authorized to use.">
+  <meta name="theme-color" content="#0b0719">
+  <title>VidSave — Save what matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Style.css">
+  <script src="app.js" defer></script>
 </head>
-
 <body>
+  <div class="ambient-glow glow-pink" aria-hidden="true"></div>
+  <div class="ambient-glow glow-blue" aria-hidden="true"></div>
+  <div class="ambient-glow glow-orange" aria-hidden="true"></div>
+  <div class="ambient-glow glow-purple" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="bg-text bg1" aria-hidden="true">VIDSAVE</div>
+  <div class="bg-text bg2" aria-hidden="true">DOWNLOAD</div>
+  <div class="bg-text bg3" aria-hidden="true">VIDEO</div>
+  <div class="bg-text bg4" aria-hidden="true">SAVE</div>
 
-  <!-- Decorative Background -->
-  <div class="bg-text bg1">VIDSAVE</div>
-  <div class="bg-text bg2">DOWNLOAD</div>
-  <div class="bg-text bg3">VIDEO</div>
-  <div class="bg-text bg4">SAVE</div>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-
-    <div class="logo">
-      <span class="logo-icon">▶</span>
-      VidSave
-    </div>
-
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">How it works</a>
-      <a href="#">FAQ</a>
-    </div>
-
+  <nav class="navbar" aria-label="Main navigation">
+    <a class="logo" href="#top" aria-label="VidSave home"><span class="logo-icon" aria-hidden="true"><span>▶</span></span><span>Vid<span class="logo-accent">Save</span></span></a>
+    <div class="nav-links"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#footer">Contact</a></div>
   </nav>
 
+  <main id="top" class="hero">
+    <div class="eyebrow"><span class="eyebrow-dot"></span> Your videos, your way</div>
+    <h1>Save the moments<br><span>that matter.</span></h1>
+    <p class="subtitle">A beautifully simple way to save and organize video links you own or have permission to use.</p>
 
-  <!-- Main Section -->
-  <main class="hero">
-
-    <div class="badge">
-      ⚡ Fast • Simple • Easy
-    </div>
-
-    <h1>
-      Save Your
-      <span>Favorite Videos</span>
-    </h1>
-
-    <p class="subtitle">
-      Paste a video link below and get started.
-      A simple and clean way to manage downloadable content.
-    </p>
-
-
-    <!-- URL Box -->
-    <div class="download-card">
-
+    <form class="download-card" id="download-form" novalidate>
       <div class="input-box">
-
-        <span class="link-icon">🔗</span>
-
-        <input
-          type="url"
-          placeholder="Paste video URL here..."
-          aria-label="Video URL"
-        >
-
-        <button class="paste-btn">
-          Paste
-        </button>
-
+        <span class="link-icon" aria-hidden="true">↗</span>
+        <label class="sr-only" for="video-url">Video URL</label>
+        <input id="video-url" name="video-url" type="url" inputmode="url" placeholder="Paste a video URL here..." autocomplete="url" spellcheck="false" required>
+        <button class="paste-btn" id="paste-btn" type="button">Paste</button>
       </div>
+      <button class="download-btn" id="download-btn" type="submit"><span aria-hidden="true">↓</span> <span class="button-label">Download</span></button>
+    </form>
+    <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+    <p class="small-text">Only download content you own or have permission to use.</p>
 
-
-      <button class="download-btn">
-        <span>⬇</span>
-        Download
-      </button>
-
-    </div>
-
-
-    <p class="small-text">
-      Only download content you own or have permission to use.
-    </p>
-
-
-    <!-- Features -->
-    <section class="features">
-
-      <div class="feature-card">
-
-        <div class="feature-icon red">
-          ⚡
-        </div>
-
-        <h3>Fast</h3>
-
-        <p>
-          Simple and quick interface.
-        </p>
-
-      </div>
-
-
-      <div class="feature-card">
-
-        <div class="feature-icon blue">
-          🔒
-        </div>
-
-        <h3>Private</h3>
-
-        <p>
-          Your links stay private.
-        </p>
-
-      </div>
-
-
-      <div class="feature-card">
-
-        <div class="feature-icon purple">
-          📱
-        </div>
-
-        <h3>Mobile Friendly</h3>
-
-        <p>
-          Works smoothly on phones.
-        </p>
-
-      </div>
-
+    <section class="features" id="features" aria-label="VidSave features">
+      <article class="feature-card"><div class="feature-icon red" aria-hidden="true">✦</div><h3>Fast</h3><p>Get from link to saved content with a quick, effortless flow.</p></article>
+      <article class="feature-card"><div class="feature-icon blue" aria-hidden="true">⌁</div><h3>Private</h3><p>Your links stay yours. We keep the experience simple and discreet.</p></article>
+      <article class="feature-card"><div class="feature-icon purple" aria-hidden="true">⌁</div><h3>Mobile Friendly</h3><p>A polished experience that feels right on every screen.</p></article>
     </section>
-
+    <section class="how-it-works" id="how-it-works"><span class="section-kicker">Simple by design</span><p>Paste a link. Check your rights. Save what you’re allowed to keep.</p></section>
   </main>
 
-
-  <!-- Footer -->
-  <footer>
-
-    <div class="footer-logo">
-      ▶ VidSave
-    </div>
-
-    <p>
-      © 2026 VidSave. All rights reserved.
-    </p>
-
-    <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Contact</a>
-    </div>
-
-  </footer>
-
+  <footer id="footer"><a class="footer-logo" href="#top"><span class="mini-mark">▶</span> Vid<span>Save</span></a><p>© 2026 VidSave. Built for the moments worth keeping.</p><div class="footer-links"><a href="#footer">Privacy</a><a href="#footer">Terms</a><a href="mailto:hello@vidsave.example">Contact</a></div></footer>
 </body>
-      </html>
+</html>
